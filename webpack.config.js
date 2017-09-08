@@ -9,13 +9,14 @@ module.exports = {
   },
   //ES6 pack成 ES5
   output: {
-    path: path.join(__dirname, 'public'), //输出目录的配置，模板、样式、脚本、图片等资源的路径配置都相对于它
+    path: path.join(__dirname, 'public/dist'), //输出目录的配置，模板、样式、脚本、图片等资源的路径配置都相对于它
     filename: '[name].js',
   },
 
   externals: {
     'react': "React",
-    'react-dom': 'ReactDOM'
+    'react-dom': 'ReactDOM',
+    'react': "React",
   },
 
   devtool: 'source-map',
@@ -27,21 +28,6 @@ module.exports = {
   },
 
   plugins: [
-
-    //复制资源文件
-    new CopyWebpackPlugin([
-      {
-        from: 'src/assets',
-        to: 'assets'
-      }
-    ]),
-
-    //复制html
-    new CopyWebpackPlugin([
-      {
-        from: 'src/index.html'
-      }
-    ]),
 
     // new webpack.optimize.UglifyJsPlugin({
     //   //生成环境启用js压缩
